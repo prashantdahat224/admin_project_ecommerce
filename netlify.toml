@@ -1,0 +1,18 @@
+# netlify.toml
+
+[build]
+  command = "npm run build"
+  publish = "build"
+  functions = "netlify/functions"
+
+# Redirects API calls to Netlify Functions
+[[redirects]]
+  from = "/.netlify/functions/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Optional: Redirect all routes to index.html (for React Router)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
