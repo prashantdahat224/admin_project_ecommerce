@@ -15,6 +15,7 @@ import AdminRoute from "./routes/AdminRoute";
 
 // import Home from "./pages/Home";
 import Account from "./pages/Account";
+import welcome from "./pages/welcome";
 import EmailLogin from "./pages/EmailLogin";
 import EmailRegistration from "./pages/EmailRegistration";
 // import TestingPage from "./pages/TestingPage";
@@ -122,7 +123,9 @@ function App() {
   return (
     
     <Routes>
+  
 
+   <Route path="/*" element={<Account/>} />
 
     <Route path="/admin_only" element={<AdminRoute />}>          
        <Route index element={<TestingPage />} />
@@ -163,6 +166,7 @@ function App() {
     <Route path="/EmailLogin" element={<EmailLogin />} /> 
       <Route path="/EmailRegistration" element={<EmailRegistration />} /> 
            <Route path="/AdminPassword/:id" element={<AdminPassword />} /> 
+           <Route path="/welcome" element={<welcome />} /> 
 
 
 {/* 

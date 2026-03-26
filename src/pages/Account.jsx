@@ -12,7 +12,7 @@ return (
 <button
 OnClick={() => navigate("/AdminPassword")}
  className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
-Click Me
+Click here
 </button>
 </div>
 );
