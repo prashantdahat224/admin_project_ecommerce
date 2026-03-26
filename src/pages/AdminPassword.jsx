@@ -37,7 +37,7 @@ function AdminPassword() {
 
  
 const AdminCheck = async () => {
-  console.log("checking admin role for user id:", id);
+  //console.log("checking admin role for user id:", id);
   try {
     const res = await fetch(
       `/.netlify/functions/check-admin-role?id=${id}`
@@ -102,7 +102,7 @@ const AdminCheck = async () => {
   } finally {
     setLoading2(false);
   }
-  console.log("checking",checking);
+  //console.log("checking",checking);
 };
 
   const handlePassword = () => {
