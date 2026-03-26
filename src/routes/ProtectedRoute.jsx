@@ -4,13 +4,17 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FullScreenLoader from "../utils/FullScreenLoader"; 
 
+    // console.log("111");
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useSelector((state) => state.auth);
 const navigate = useNavigate();
 
-  //console.log("user",user)
-  //console.log("children",children)
+
+  //   console.log("222");
+
+  // console.log("user",user)
+  // console.log("children",children)
   const open = !loading && !user;
   
   if (loading) {
@@ -21,7 +25,7 @@ const navigate = useNavigate();
   if (!user) {
    // return <Navigate to="/EmailRegistration" replace />;
  // return <LoginDialog_two open={open} onClose={() => navigate("/welcome")} />;
-  return <Navigate to="/welcome" replace />;
+  return <Navigate to="/Welcome" replace />;
   }
 
   return children;

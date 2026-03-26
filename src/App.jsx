@@ -15,7 +15,7 @@ import AdminRoute from "./routes/AdminRoute";
 
 // import Home from "./pages/Home";
 import Account from "./pages/Account";
-import welcome from "./pages/welcome";
+import Welcome from "./pages/welcome";
 import EmailLogin from "./pages/EmailLogin";
 import EmailRegistration from "./pages/EmailRegistration";
  import TestingPage from "./pages/TestingPage";
@@ -155,18 +155,28 @@ function App() {
 
 <Route path="/account" element={
 
-      <ProtectedRoute>
+       
         <Account />
+       
+        
+        } />
+
+<Route path="/AdminPassword" element={
+
+      <ProtectedRoute>
+        <AdminPassword />
       </ProtectedRoute>
      
         
-        } /> 
+        } />
+
+                 
+ 
 
  <Route path="/logOut" element={<LogOut />} />
     <Route path="/EmailLogin" element={<EmailLogin />} /> 
-      <Route path="/EmailRegistration" element={<EmailRegistration />} /> 
-           <Route path="/AdminPassword" element={<AdminPassword />} /> 
-           <Route path="/welcome" element={<welcome />} /> 
+      <Route path="/EmailRegistration" element={<EmailRegistration />} />
+           <Route path="/Welcome" element={<Welcome />} /> 
 
 
 {/* 
