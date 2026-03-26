@@ -21,6 +21,12 @@ function AdminOption() {
       >
         Product Post UPLOAD
       </button>
+      <button
+        onClick={() => navigate("/admin_only/ProductPostUpload-backend")}
+        className="w-40 border border-blue-600 text-blue-600 p-2 rounded-md "
+      >
+        Product Post UPLOAD - backend
+      </button>
 
       <button
         onClick={() => navigate("/admin_only/EditProductPost")}

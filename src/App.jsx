@@ -21,6 +21,7 @@ import EmailRegistration from "./pages/EmailRegistration";
  import TestingPage from "./pages/TestingPage";
 // import EditProfile from "./pages/EditProfile";
  import ProductPostUpload from "./pages/admin_only/ProductPostUpload";
+ import ProductPostUpload_backend from "./pages/admin_only/ProductPostUpload-backend";
                                                
 //import ProductDetails from "./pages/ProductDetails";
  import EditProductPosts from "./pages/admin_only/EditProductPost";
@@ -142,7 +143,7 @@ function App() {
       <Route path="OfferUploadNew" element={<OfferUploadNew />} />
       <Route path="AdminDetailsPage" element={<AdminDetailsPage />} />
       <Route path="AdminSelect" element={<AdminSelect />} />
-       <Route path="ProductPostUpload" element={<ProductPostUpload />} />
+       <Route path="ProductPostUpload-backend" element={<ProductPostUpload_backend />} />
       <Route path="EditProductPost" element={<EditProductPosts />} /> 
       <Route path="AdminProductSearch" element={<AdminProductSearch />} /> 
       {/* <Route path="edit-products" element={<EditProductPosts />} />   */}
