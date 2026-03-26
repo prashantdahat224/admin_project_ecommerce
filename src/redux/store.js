@@ -5,7 +5,7 @@ import storage from "redux-persist/lib/storage"; // defaults to localStorage
 import authReducer from "./authSlice";
 import userDataReducer from "./userDataSlice";
 import productReducer from "./productSlice";
-import wishlistReducer from "./wishlistSlice";
+//import wishlistReducer from "./wishlistSlice";
 import adminReducer from "./adminSlice";
 
 const persistConfig = {
@@ -20,7 +20,7 @@ export const store = configureStore({
     auth: authReducer,
     userData: userDataReducer,
     products: productReducer,
-    wishlist: wishlistReducer,
+    //wishlist: wishlistReducer,
     admin: persistedAdminReducer,
   },
 });

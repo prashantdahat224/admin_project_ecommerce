@@ -82,4 +82,4 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //   },
 // });
 
-export default wishlistSlice.reducer;
+//export default wishlistSlice.reducer;
