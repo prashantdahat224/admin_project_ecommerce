@@ -2,7 +2,7 @@
 
 [build]
   command = "npm run build"
-  publish = "build"
+  publish = "dist"
   functions = "netlify/functions"
 
 # Redirects API calls to Netlify Functions
@@ -11,7 +11,7 @@
   to = "/.netlify/functions/:splat"
   status = 200
 
-# Optional: Redirect all routes to index.html (for React Router)
+# Redirect all routes to index.html (for React Router / SPA routing)
 [[redirects]]
   from = "/*"
   to = "/index.html"
