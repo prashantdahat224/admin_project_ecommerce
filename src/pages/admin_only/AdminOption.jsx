@@ -67,7 +67,7 @@ function AdminOption() {
        
 
       <button
-        onClick={() => navigate("/Account")}
+        onClick={() => navigate("/account")}
         className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md hover:bg-gray-200"
       >
        go BACK

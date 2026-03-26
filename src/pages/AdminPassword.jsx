@@ -8,13 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { setAdmin } from "../redux/adminSlice";
  import FullScreenLoader from "../utils/FullScreenLoader"; 
 
+ 
 
 //checked / database
 
 function AdminPassword() {
 
-    const { id} =useParams();
-  
+
+   const { user, loading3 } = useSelector((state) => state.auth); //added
+
+
+    
 
    const dispatch = useDispatch();
 
@@ -29,6 +33,7 @@ function AdminPassword() {
 
  //console.log("data 1" );
   const navigate = useNavigate();
+    const id =user?.id;
 
  
 const AdminCheck = async () => {
@@ -160,7 +165,7 @@ const AdminCheck = async () => {
         />)}
         <button
           onClick={handlePassword}
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+          className="w-full border-2 border-blue-600 text-blue-600 py-2 rounded-md"
         >
           {loading2?"Loading...":"__Go__@_Now_"}
         </button>

@@ -18,7 +18,7 @@ import Account from "./pages/Account";
 import welcome from "./pages/welcome";
 import EmailLogin from "./pages/EmailLogin";
 import EmailRegistration from "./pages/EmailRegistration";
-// import TestingPage from "./pages/TestingPage";
+ import TestingPage from "./pages/TestingPage";
 // import EditProfile from "./pages/EditProfile";
  import ProductPostUpload from "./pages/admin_only/ProductPostUpload";
                                                
@@ -28,7 +28,7 @@ import EmailRegistration from "./pages/EmailRegistration";
 
  
 //import Settings from "./pages/Settings";
-//import LogOut  from "./pages/logOut";
+import LogOut  from "./pages/logOut";
 //import LogOutButton  from "./pages/logOutButton";
 
 
@@ -165,7 +165,7 @@ function App() {
  <Route path="/logOut" element={<LogOut />} />
     <Route path="/EmailLogin" element={<EmailLogin />} /> 
       <Route path="/EmailRegistration" element={<EmailRegistration />} /> 
-           <Route path="/AdminPassword/:id" element={<AdminPassword />} /> 
+           <Route path="/AdminPassword" element={<AdminPassword />} /> 
            <Route path="/welcome" element={<welcome />} /> 
 
 
