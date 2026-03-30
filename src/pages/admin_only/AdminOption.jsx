@@ -78,21 +78,16 @@ function AdminOption() {
       
       <button
         onClick={() => navigate("/admin_only/AdminProfilePassword")}                        
-        className="mb-20 border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md hover:bg-gray-200"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
        Admin Profile Page
       </button>
        
 
+       
       <button
-        onClick={() => navigate("/account")}
-        className="  bg-gray-500 w-40 text-white py-2 rounded-md  "
-      >
-       go BACK
-      </button>
-      <button
-        onClick={() => navigate("/home")}
-        className="bg-gray-500 w-40 text-white w-40 py-2 rounded-md  "
+        onClick={() => navigate("/")}
+        className="bg-gray-500 w-40 text-white w-40 py-2 rounded-md mb-20 "
       >
        go back to HOME
       </button>
