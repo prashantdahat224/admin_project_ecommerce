@@ -11,6 +11,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
 
 //import { API_URL } from "./config/api";
+import Logo from './assets/logo.jpg'; // Adjust the path as needed
 
 
 // import Home from "./pages/Home";
@@ -187,7 +188,7 @@ function App() {
         <Route path="/Search" element={<Search />} /> 
 
       <Route path="/product/:id" element={<ProductDetails />} >
-          
+
      </Route>
 
     <Route path="/image-page" element={<ImagePage />} /> */}
@@ -204,16 +205,13 @@ function App() {
       <ProtectedRoute>
         <Account />
       </ProtectedRoute>
-     
-        
+           
         } />  */}
    
       {/* <Route path="/CategoryProducts/:categoryId" element={<CategoryProducts />} /> */}
   
-
       {/* <Route path="/Settings" element={<Settings />} />
      
- 
       <Route path="/EditProfile" element={<EditProfile />} />
       <Route path="/OrderDetails/:orderId" element={<OrderDetails />} />
       <Route path="/OrderTracking/:orderId" element={<OrderTracking />} />
