@@ -39,6 +39,7 @@ import LogOut  from "./pages/logOut";
 //import Search from "./pages/Search"
 //import WishListPage from "./pages/WishListPage";
  import Manage_category from "./pages/admin_only/Manage_category";
+ import manage_brand from "./pages/admin_only/manage_brand";
  import ManageKeywords from "./pages/admin_only/ManageKeywords";
  import ManageImageCategory from "./pages/admin_only/ManageImageCategory";
  import ManageTrendingKeywords from "./pages/admin_only/ManageTrendingKeywords";
@@ -132,6 +133,7 @@ function App() {
     <Route path="/admin_only" element={<AdminRoute />}>          
        <Route index element={<TestingPage />} />
        <Route path="Manage_category" element={<Manage_category />} />
+       <Route path="manage_brand" element={<manage_brand />} />
       <Route path="editKeywordAndCategory/:productId" element={<EditKeywordAndCategory />} /> 
      <Route path="new-offer-upload/:posterId" element={<EditDetailsOfferNew />} /> 
       <Route path="ManageKeywords" element={<ManageKeywords />} />
@@ -145,6 +147,7 @@ function App() {
       <Route path="AdminDetailsPage" element={<AdminDetailsPage />} />
       <Route path="AdminSelect" element={<AdminSelect />} />
        <Route path="ProductPostUpload-backend" element={<ProductPostUpload_backend />} />
+       <Route path="ProductPostUpload" element={<ProductPostUpload />} />
       <Route path="EditProductPost" element={<EditProductPosts />} /> 
       <Route path="AdminProductSearch" element={<AdminProductSearch />} /> 
       {/* <Route path="edit-products" element={<EditProductPosts />} />   */}
