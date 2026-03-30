@@ -8,7 +8,7 @@ import Alert from "../../components/ProgressCompleteBox"
 import { setSelectedProductIds } from "../../redux/productSlice";
 
 
-export default function Manage_category() {
+export default function Manage_brand() {
  // const dispatch = useDispatch();
 
   //  console.log("fshdjfh")
