@@ -11,7 +11,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminRoute from "./routes/AdminRoute";
 
 //import { API_URL } from "./config/api";
-import Logo from './assets/logo.jpg'; // Adjust the path as needed
+import Logo from './assets/logo.jpeg'; // Adjust the path as needed
 
 
 // import Home from "./pages/Home";
