@@ -39,7 +39,7 @@ import LogOut  from "./pages/logOut";
 //import Search from "./pages/Search"
 //import WishListPage from "./pages/WishListPage";
  import Manage_category from "./pages/admin_only/Manage_category";
- import manage_brand from "./pages/admin_only/manage_brand";
+ import Manage_brand from "./pages/admin_only/manage_brand";
  import ManageKeywords from "./pages/admin_only/ManageKeywords";
  import ManageImageCategory from "./pages/admin_only/ManageImageCategory";
  import ManageTrendingKeywords from "./pages/admin_only/ManageTrendingKeywords";
@@ -133,7 +133,7 @@ function App() {
     <Route path="/admin_only" element={<AdminRoute />}>          
        <Route index element={<TestingPage />} />
        <Route path="Manage_category" element={<Manage_category />} />
-       <Route path="manage_brand" element={<manage_brand />} />
+       <Route path="manage_brand" element={<Manage_brand />} />
       <Route path="editKeywordAndCategory/:productId" element={<EditKeywordAndCategory />} /> 
      <Route path="new-offer-upload/:posterId" element={<EditDetailsOfferNew />} /> 
       <Route path="ManageKeywords" element={<ManageKeywords />} />

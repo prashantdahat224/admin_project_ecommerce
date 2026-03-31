@@ -477,17 +477,20 @@ const ProductPostUpload = () => {
         Product uploaded successfully...
       </h1>
       
-      
-      <div className="flex gap-4"
-      
-        >
-        <button className="px-4 py-2 mt-6 bg-blue-500 text-white rounded hover:bg-blue-600"
-         onClick={()=>{navigate(`admin_only/editKeywordAndCategory/${ProductId_last}`)}}
+        <button className="px-4 py-2 mt-6 border border-blue-500 text-blue-500 rounded  "
+         onClick={()=>{navigate(`/admin_only/editKeywordAndCategory/${ProductId_last}`)}}
+       //  onClick={()=>{navigate(`/admin_only/editKeywordAndCategory/${id}`)}        
          >
-          Set Keywords and Category
+          Set Keywords, Category and brand
+        </button >
+        <button className="px-4 py-2 mt-6 border border-gray-500 text-gray-500 rounded  "
+         onClick={()=>{navigate(-1)}}
+       //  onClick={()=>{navigate(`/admin_only/editKeywordAndCategory/${id}`)}}            
+         >
+          back
         </button >
 
-      </div>
+       
 
     </div>
   

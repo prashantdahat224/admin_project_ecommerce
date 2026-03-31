@@ -340,9 +340,9 @@ export default function EditProductDetails() {
         <p className="font-bold mt-2">Product code-</p>
         <p className=" p-2 text-sm bg-gray-100 radius">{form.product_code}</p>
 
-        <p className="font-semibold mt-5">Keywords and Category-</p>
+        <p className="font-semibold mt-5">Keywords, brand and Category-</p>
          <button onClick={()=>{navigate(`/admin_only/editKeywordAndCategory/${id}`)}} className="w-full border border-blue-600 text-blue-600 py-2 rounded mt-1">
-          Edit keywords and category
+          Edit keywords, brand and category
         </button>
 
         <p className="font-semibold mt-4">name-</p>

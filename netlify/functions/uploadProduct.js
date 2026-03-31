@@ -1,54 +1,16 @@
-// netlify/functions/uploadProduct.js
-import { createClient } from '@supabase/supabase-js';
+import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_ANON_KEY   // or SERVICE_ROLE_KEY if you need privileged inserts
+  process.env.SUPABASE_ANON_KEY
 );
+  console.error("here 1"); //  
 
 export async function handler(event) {
   try {
-    // Parse request body (frontend will send JSON)
-    const body = JSON.parse(event.body);
-    const {
-      name,
-      price,
-      description,
-      about,
-      stock,
-      currency,
-      featuredFile,
-      productFile,
-      additionalFiles,
-    } = body;
+    const body = JSON.parse(event.body); // ✅ works with JSON
+    const { name, price, description, about, stock, currency, product_code, featuredPath, productPath, additionalPaths } = body;
 
-    if (!name || !price || !featuredFile || !productFile) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Missing required fields" }),
-      };
-    }
-
-    // Upload featured image
-    const featuredPath = `featured/${Date.now()}-${featuredFile.name}`;
-    await supabase.storage.from("products").upload(featuredPath, featuredFile);
-
-    // Upload product image
-    const productPath = `product/${Date.now()}-${productFile.name}`;
-    await supabase.storage.from("products").upload(productPath, productFile);
-
-    // Upload additional images
-    const additionalPaths = [];
-    for (const file of additionalFiles || []) {
-      const path = `additional/${Date.now()}-${file.name}`;
-      await supabase.storage.from("products").upload(path, file);
-      additionalPaths.push(path);
-    }
-
-    // Generate product code
-    const product_code = `PRD-${Date.now()}`;
-
-    // Insert product record
     const { data, error } = await supabase
       .from("products")
       .insert([
@@ -68,16 +30,14 @@ export async function handler(event) {
       .select("id")
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error(error);
+      return { statusCode: 400, body: JSON.stringify({ error: error.message }) };
+    }
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ productId: data.id }),
-    };
+    return { statusCode: 200, body: JSON.stringify({ id: data.id }) };
   } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
-    };
+    console.error(err);
+    return { statusCode: 500, body: JSON.stringify({ error: "Server error" }) };
   }
 }

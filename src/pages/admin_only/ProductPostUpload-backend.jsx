@@ -199,12 +199,42 @@ const ProductPostUpload = () => {
 
 //     }
 //     setLoading_spinner(false);
-//   };
-const handleSubmit = async (e) => {
+//   };   
+ const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading_spinner(true);
 
+  if (!name || !price || !featuredFile || !ProductFile) {
+    setLoading_spinner(false);
+    alert("Product name, price, and featured image are required!");
+    return;
+  }
+
+  setLoading(true);
+  setMessage(null);
+  setError(null);
+
   try {
+    // ✅ generate product code in frontend
+    const product_code = generateProductCode(name);
+
+    // 1️⃣ Upload featured image
+    const featuredPath = `featured/${Date.now()}-${featuredFile.name}`;
+    await supabase.storage.from("products").upload(featuredPath, featuredFile);
+
+    // 2️⃣ Upload product image
+    const productPath = `product/${Date.now()}-${ProductFile.name}`;
+    await supabase.storage.from("products").upload(productPath, ProductFile);
+
+    // 3️⃣ Upload additional images
+    const additionalPaths = [];
+    for (const file of additionalFiles) {
+      const path = `additional/${Date.now()}-${file.name}`;
+      await supabase.storage.from("products").upload(path, file);
+      additionalPaths.push(path);
+    }
+
+    // 4️⃣ Call Netlify function with JSON (not FormData)
     const res = await fetch("/.netlify/functions/uploadProduct", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -215,25 +245,28 @@ const handleSubmit = async (e) => {
         about,
         stock,
         currency,
-        featuredFile,
-        productFile,
-        additionalFiles,
+        product_code,
+        featuredPath,
+        productPath,
+        additionalPaths,
       }),
     });
 
-    const data = await res.json();
-    if (res.ok) {
-      setproductId_last(data.productId);
-      handleCancel();
-    } else {
-      setError(data.error);
-    }
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || "Upload failed");
+
+    setproductId_last(result.id);
+    handleCancel();
   } catch (err) {
-    setError("Network error");
+    console.error("Error uploading product:", err);
+    setError("Failed to upload product");
   } finally {
+    setLoading(false);
+    setMainPage(false);
     setLoading_spinner(false);
   }
 };
+
 
 
 
@@ -281,7 +314,7 @@ const handleSubmit = async (e) => {
           className="h-10 w-10"
          onClick={() => navigate(-1)}
         />
-        Upload Product
+        Upload Product  
       </h2>
       <hr className="border-gray-300" />
 
@@ -516,10 +549,10 @@ const handleSubmit = async (e) => {
       <div className="flex gap-4"
       
         >
-        <button className="px-4 py-2 mt-6 bg-blue-500 text-white rounded hover:bg-blue-600"
+        <button className="px-4 py-2 mt-6 border border-blue-500 text-blue-500 rounded  "
          onClick={()=>{navigate(`admin_only/editKeywordAndCategory/${ProductId_last}`)}}
          >
-          Set Keywords and Category
+          Set Keywords, Category and brand
         </button >
 
       </div>
