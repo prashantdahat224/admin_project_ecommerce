@@ -371,10 +371,10 @@ const ProductPostUpload = () => {
 
           {/* Product Details */}
           <div>
-          <p className="font-semibold">Product name -</p>
+          <p className="font-semibold">Brand Title = _Product_name_ -</p>
           <input
             type="text"
-            placeholder="Enter product name"
+            placeholder="eg. Apple"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full border rounded px-3 py-2 placeholder-gray-600"
@@ -404,10 +404,10 @@ const ProductPostUpload = () => {
           </div>
 
            <div>
-          <p className="font-semibold">About -</p>
+          <p className="font-semibold">Product full name = _About_ -</p>
           <input
               type="text"
-              placeholder="eg. Nike, etc (OPTIONAL)"
+              placeholder="eg. Apple iPhone 14 Pro Max (128GB) - Silver"
               value={about}
               onChange={(e) => setAbout(e.target.value)}
               className="flex-1 border rounded px-3 py-2 placeholder-gray-600"

@@ -42,6 +42,7 @@ import LogOut  from "./pages/logOut";
  import Manage_brand from "./pages/admin_only/manage_brand";
  import ManageKeywords from "./pages/admin_only/ManageKeywords";
  import ManageImageCategory from "./pages/admin_only/ManageImageCategory";
+ import ManageImageBrand from "./pages/admin_only/ManageImageBrand";
  import ManageTrendingKeywords from "./pages/admin_only/ManageTrendingKeywords";
  import SearchProductID from "./pages/admin_only/SearchProductID";
  import OfferUploadNew from "./pages/admin_only/OfferUploadNew";
@@ -141,6 +142,7 @@ function App() {
       <Route path="EditOrder" element={<EditOrder />} />
       <Route path="UploadNewOfferPoster" element={<UploadNewOfferPoster />} />
       <Route path="ManageImageCategory/:productId" element={<ManageImageCategory />} />
+      <Route path="ManageImageBrand/:productId" element={<ManageImageBrand />} />
       <Route path="ManageTrendingKeywords" element={<ManageTrendingKeywords />} />
       <Route path="SearchProductID/:productIds" element={<SearchProductID />} />
       <Route path="OfferUploadNew" element={<OfferUploadNew />} />

@@ -29,6 +29,11 @@ Continue
 Continue Admin 
 </button>)}
 
+{true && (<button onClick={() => navigate("/admin_only/ProductPostUpload")}
+ className="mt-4 bg-gray-500 text-white px-4 py-3 px-1 rounded  ">
+Continue Admin - testing
+</button>)}
+
  </div>
  
 

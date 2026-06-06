@@ -86,7 +86,7 @@ export default function Manage_brand() {
   const addCategory = async () => {
 
    if(categories.length > 0 && categories.some(cat => cat.name.toLowerCase() === name.toLowerCase())){
-    alert("category already exist");
+    alert("brand already exist");
     return;
    }
      
@@ -104,7 +104,7 @@ export default function Manage_brand() {
     if (error) {
       setLoading(false);
     } else {
-     alert("new category created!")
+     alert("new brand created!")
     setName("");
     fetchCategories();
     setLoading(false);
@@ -125,7 +125,7 @@ export default function Manage_brand() {
     if (error) {
       setLoading(false);
     }else{
-      alert("category deleted.");
+      alert("brand deleted.");
     fetchCategories();
     }
     
@@ -353,10 +353,10 @@ export default function Manage_brand() {
                
                 <button
 
-                  onClick={() => navigate(`/admin_only/ManageImageCategory/${cat.id}`)}
+                onClick={() => navigate(`/admin_only/ManageImageBrand/${cat.id}`)}
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                 >
-                  Manage Image for brand
+                  Manage Image & link for brand
                 </button>
 
 
