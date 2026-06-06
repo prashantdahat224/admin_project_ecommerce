@@ -287,12 +287,13 @@ const { data: urlData } = supabase.storage
      
      <hr />
      
-      <div className="mt-4flex flex-col items-center gap-4">
+      <div className="mt-4 flex items-center gap-4">
+      <p>link of the brand website:</p>
       <textarea
         className="w-80 h-32 p-2 border rounded-md"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Enter your text..."
+        placeholder="Paste your link..."
       />
       <button
         onClick={handleSave}
