@@ -53,7 +53,7 @@ const [text, setText] = useState("");
     if(!error){
 setLoading(false);
      }
-    if (!error && data?.category_image) {
+    if (!error && data?.brand_image) {
 const { data: urlData } = supabase.storage
        .from("category-images")
       
