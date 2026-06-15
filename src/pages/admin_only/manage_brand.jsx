@@ -52,14 +52,14 @@ export default function Manage_brand() {
       setCategories(data);
 
       const categoriesWithUrls = data.map(cat => {
-        if (cat.category_image) {
+        if (cat.brand_image) {
           const { data: urlData } = supabase.storage
             .from("category-images")
             .getPublicUrl(cat?.category_image);
 
-          return { ...cat, category_image: urlData.publicUrl };
+          return { ...cat, brand_image: urlData.publicUrl };
         } else {
-          return { ...cat, category_image: null };
+          return { ...cat, brand_image: null };
         }
       });
 
@@ -340,10 +340,10 @@ export default function Manage_brand() {
                 <div className="w-15 h-15 rounded-full border overflow-hidden flex items-center justify-center bg-gray-100">
 
                   {
-                    cat.category_image ? (
+                    cat.brand_image  ? (
                       <div>
 
-                        <img src={cat.category_image} className="w-20 h-20 object-cover" />
+                        <img src={cat.brand_image} className="w-20 h-20 object-cover" />
                       </div>
                     ) : (
                       <p className="text-gray-400 text-sm p-4">No Image</p>

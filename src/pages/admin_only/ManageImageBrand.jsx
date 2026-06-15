@@ -57,8 +57,8 @@ setLoading(false);
 const { data: urlData } = supabase.storage
        .from("category-images")
       
-      .getPublicUrl(data.category_image);
-       setImagePath(data.category_image);   // file path (truth)
+      .getPublicUrl(data.brand_image);
+       setImagePath(data.brand_image);   // file path (truth)
 
     setImageUrl(urlData.publicUrl);      // display URL
      setLoading(false);
