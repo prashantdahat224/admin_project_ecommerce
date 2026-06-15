@@ -177,12 +177,13 @@ const { data: urlData } = supabase.storage
  const handleSave = async () => {
     const { data, error } = await supabase
       .from("brand")
-      .insert([{ brand_link: text }]); // assumes column "content"
+  .update({ brand_link: text })
+  .eq("id", productId);
 
     if (error) {
       alert(" Error saving: " + error.message);
     } else {
-      alert("✅ Saved successfully!");
+      alert(" Saved successfully!");
       setText("");
     }
   };
@@ -193,7 +194,7 @@ const { data: urlData } = supabase.storage
           <div className="sticky top-0 bg-white z-50">
             <div className="flex items-center gap-2 ml-4">
               <img src={back} className="h-10 w-10" onClick={() => navigate(-1)} />
-                           <h1 className="text-lg font-semibold"> Product Category edit </h1>
+                           <h1 className="text-lg font-semibold"> Product brand edit </h1>
                              <button
           onClick={fetchCategories}
            className="bg-gray-200 p-1 rounded">Refresh</button>
@@ -201,7 +202,7 @@ const { data: urlData } = supabase.storage
             <hr />
           </div>
     <div className="p-6 max-w-md mx-auto">
-      <h1 className="text-xl font-bold mb-4">Categories</h1>
+      <h1 className="text-xl font-bold mb-4">brand</h1>
 
          <FullScreenLoader loading={loading}
       message=" loading..."/>
@@ -287,7 +288,7 @@ const { data: urlData } = supabase.storage
      
      <hr />
      
-      <div className="mt-4 flex items-center gap-4">
+      <div className="mt-6 items-center gap-4">
       <p>link of the brand website:</p>
       <textarea
         className="w-80 h-32 p-2 border rounded-md"
@@ -301,7 +302,7 @@ const { data: urlData } = supabase.storage
       >
         Save
       </button>
-      {status && <p className="text-sm mt-2">{status}</p>}
+      {/* {status && <p className="text-sm mt-2">{status}</p>} */}
     </div>
        
     </div>

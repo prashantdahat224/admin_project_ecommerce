@@ -55,7 +55,7 @@ export default function Manage_brand() {
         if (cat.brand_image) {
           const { data: urlData } = supabase.storage
             .from("category-images")
-            .getPublicUrl(cat?.category_image);
+            .getPublicUrl(cat?.brand_image);
 
           return { ...cat, brand_image: urlData.publicUrl };
         } else {
