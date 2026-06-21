@@ -312,7 +312,7 @@ export default function Manage_main_category() {
                  <button
 
                 onClick={()=>handleScore(item_id)}
-                className="ml-3   px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                className="ml-3  mt-1 px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
               >
                 save score
               </button>

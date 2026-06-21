@@ -289,7 +289,7 @@ export default function Manage_brand() {
                  <button
 
                 onClick={()=>handleScore(item_id)}
-                className="ml-3   px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                className="ml-3 mt-1  px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
               >
                 save score
               </button>
@@ -356,7 +356,7 @@ export default function Manage_brand() {
                 onClick={() => navigate(`/admin_only/ManageImageBrand/${cat.id}`)}
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                 >
-                  Manage Image & link for brand
+                  Edit- Image, link for brand, main_category
                 </button>
 
 
