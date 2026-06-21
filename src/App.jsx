@@ -62,6 +62,10 @@ import LogOut  from "./pages/logOut";
  import EditOrder from "./pages/admin_only/EditOrders";
  import EditOrderDetailsPage from "./pages/admin_only/EditOrdeDetailsPage";
  import EditOrderTracking from "./pages/admin_only/EditOrderTracking";
+ import Manage_main_category from "./pages/admin_only/Manage_main_category";
+ import SearchCategoryID from "./pages/admin_only/SearchCategoryID";
+ import SearchBrandID from "./pages/admin_only/SearchBrandID";
+ import ManageImageMainCategory from "./pages/admin_only/ManageImageMainCategory";
 //import OrderDetails from "./pages/OrderDetails";
 //import OrderTracking from "./pages/OrderTracking";
 //import ProductCartNew from "./pages/ProductCartNew";
@@ -158,6 +162,11 @@ function App() {
       <Route path="EditOrderTracking/:orderId" element={<EditOrderTracking />} />
       <Route path="delete-product/:id" element={<DeleteProductPost />} />
       <Route path="AdminOption" element={<AdminOption />} />
+
+      <Route path="/admin_only/Manage_main_category" element={<Manage_main_category />} />
+<Route path="/admin_only/SearchCategoryID/:productIds" element={<SearchCategoryID />} />
+<Route path="/admin_only/SearchBrandID/:productIds" element={<SearchBrandID />} />
+<Route path="/admin_only/ManageImageMainCategory/:productId" element={<ManageImageMainCategory />} />
       </Route>
 
 <Route path="/account" element={

@@ -45,11 +45,18 @@ function AdminOption() {
       
 
       <button
+        onClick={() => navigate("/admin_only/Manage_main_category")}
+        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+      >
+        manage MAIN category 
+      </button>
+      <button
         onClick={() => navigate("/admin_only/manage_category")}
         className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
       >
         manage category 
       </button>
+
       <button
         onClick={() => navigate("/admin_only/manage_brand")}
         className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"

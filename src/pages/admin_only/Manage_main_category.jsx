@@ -8,10 +8,8 @@ import Alert from "../../components/ProgressCompleteBox"
 import { setSelectedProductIds } from "../../redux/productSlice";
 
 
-export default function Manage_category() {
+export default function Manage_main_category() {
  // const dispatch = useDispatch();
-
-  //  console.log("fshdjfh")
 
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -39,11 +37,11 @@ export default function Manage_category() {
 
 
 
-  // Fetch Categories
+  // Fetch Main Categories
   const fetchCategories = async () => {
     setLoading(true);
     const { data, error } = await supabase
-      .from("categories")
+      .from("main_categories")
       .select("*")
       .order("trending_score", { ascending: false });
 
@@ -52,14 +50,14 @@ export default function Manage_category() {
       setCategories(data);
 
       const categoriesWithUrls = data.map(cat => {
-        if (cat.category_image) {
+        if (cat.main_category_image) {
           const { data: urlData } = supabase.storage
             .from("category-images")
-            .getPublicUrl(cat?.category_image);
+            .getPublicUrl(cat?.main_category_image);
 
-          return { ...cat, category_image: urlData.publicUrl };
+          return { ...cat, main_category_image: urlData.publicUrl };
         } else {
-          return { ...cat, category_image: null };
+          return { ...cat, main_category_image: null };
         }
       });
 
@@ -82,11 +80,11 @@ export default function Manage_category() {
 
   };
 
-  // Add Category
+  // Add Main Category
   const addCategory = async () => {
 
    if(categories.length > 0 && categories.some(cat => cat.name.toLowerCase() === name.toLowerCase())){
-    alert("category already exist");
+    alert("main category already exist");
     return;
    }
      
@@ -95,16 +93,15 @@ export default function Manage_category() {
       alert("spaces or comma not allowed!");
       return;
     }
-    //console.log(!name.trim(), name.includes(" "), name.includes(","))
 
 
     setLoading(true);
 
-    const { data, error } = await supabase.from("categories").insert([{ name: name_lower }]);
+    const { data, error } = await supabase.from("main_categories").insert([{ name: name_lower }]);
     if (error) {
       setLoading(false);
     } else {
-     alert("new category created!")
+     alert("new main category created!")
     setName("");
     fetchCategories();
     setLoading(false);
@@ -113,7 +110,7 @@ export default function Manage_category() {
     setLoading(false);
   };
 
-  // Delete Category
+  // Delete Main Category
   const deleteCategory = async (id) => {
 
     const confirmAction = window.confirm("Are you sure to delete ? ");
@@ -121,11 +118,11 @@ export default function Manage_category() {
     if (!confirmAction) return;
 
     setLoading(false);
-    const { data, error } = await supabase.from("categories").delete().eq("id", id);
+    const { data, error } = await supabase.from("main_categories").delete().eq("id", id);
     if (error) {
       setLoading(false);
     }else{
-      alert("category deleted.");
+      alert("main category deleted.");
     fetchCategories();
     }
     
@@ -138,16 +135,16 @@ export default function Manage_category() {
 
 
   ///////////
-  const fetchProductsByCategoryID = async (catId) => {
+  const fetchCategoriesByCategoryID = async (mainCatId) => {
     setLoading(true);
-    // Step 1: Get product IDs from product_keywords table
-    const { data: productLinks, error: Error } = await supabase
-      .from("products")
+    // Get category ids linked to this main category
+    const { data: categoryLinks, error: Error } = await supabase
+      .from("categories")
       .select("id")
-      .eq("category_id", catId);
+      .eq("main_category_id", mainCatId);
 
-    console.log("data", productLinks)
-    console.log("catId", catId)
+    console.log("data", categoryLinks)
+    console.log("mainCatId", mainCatId)
 
     if (Error) {
       setLoading(false);
@@ -155,23 +152,49 @@ export default function Manage_category() {
       return;
     }
 
-    // Extract product IDs into an array
-    const productIds = productLinks.map((link) => link.id);
+    const categoryIds = categoryLinks.map((link) => link.id);
 
-    if (productIds.length === 0) {
+    if (categoryIds.length === 0) {
       setLoading(false);
-      alert("product not found");
-      // setProducts([]); // No products for this keyword
+      alert("category not found");
       return;
     } else {
       setLoading(false)
-      console.log("productIds", productIds)
-      console.log("productIds", productIds)
+      console.log("categoryIds", categoryIds)
 
+      navigate(`/admin_only/SearchCategoryID/${categoryIds}`);
+    }
+  };
+  ///////////
 
-     // dispatch(setSelectedProductIds(productIds));
+  const fetchBrandsByCategoryID = async (mainCatId) => {
+    setLoading(true);
+    // Get brand ids linked to this main category
+    const { data: brandLinks, error: Error } = await supabase
+      .from("brand")
+      .select("id")
+      .eq("main_category_id", mainCatId);
 
-      navigate(`/admin_only/SearchProductID/${productIds}`);
+    console.log("data", brandLinks)
+    console.log("mainCatId", mainCatId)
+
+    if (Error) {
+      setLoading(false);
+      console.error(Error);
+      return;
+    }
+
+    const brandIds = brandLinks.map((link) => link.id);
+
+    if (brandIds.length === 0) {
+      setLoading(false);
+      alert("brand not found");
+      return;
+    } else {
+      setLoading(false)
+      console.log("brandIds", brandIds)
+
+      navigate(`/admin_only/SearchBrandID/${brandIds}`);
     }
   };
   ///////////
@@ -181,7 +204,7 @@ export default function Manage_category() {
 
     setLoading(true);
 
-    const { data, error } = await supabase.from("categories")
+    const { data, error } = await supabase.from("main_categories")
     .update({ trending_score: number_s })
     .eq("id",id);
     if (error) {
@@ -207,7 +230,7 @@ export default function Manage_category() {
   const handleScore = (id) => {
     
     if(!item_id && !item_name){
-      alert("no category selected")
+      alert("no main category selected")
       return;
     }
 
@@ -239,7 +262,7 @@ export default function Manage_category() {
       <div className="sticky top-0 bg-white z-50">
         <div className="flex items-center gap-2 ml-4">
           <img src={back} className="h-10 w-10" onClick={() => navigate(-1)} />
-          <h1 className="text-lg font-semibold"> Product Category edit </h1>
+          <h1 className="text-lg font-semibold"> Main Category edit </h1>
             <button
           onClick={fetchCategories}
            className="bg-gray-200 p-1 rounded">Refresh</button>
@@ -247,7 +270,7 @@ export default function Manage_category() {
         <hr />
       </div>
       <div className="p-4 max-w-md mx-auto">
-        <h1 className="text-xl font-bold mb-4">Categories</h1>
+        <h1 className="text-xl font-bold mb-4">Main Categories</h1>
 
         <FullScreenLoader loading={loading}
           message=" loading..." />
@@ -259,13 +282,13 @@ export default function Manage_category() {
         />
 
         
-        {/* Add Category */}
-        <p className="font-semibold">Add new category:</p>
+        {/* Add Main Category */}
+        <p className="font-semibold">Add new main category:</p>
         <div className="mb-4" >
         <div className="flex gap-2 mb-2  mt-1">
           <input
             className="border p-2 flex-1 rounded"
-            placeholder="Category name"
+            placeholder="Main category name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -279,7 +302,7 @@ export default function Manage_category() {
         </div>
         <hr></hr>
         <div className=" border-2 border-gray-500 p-2 mt-2">
-          <p className="font-semibold">{item_name || "no category selected"}</p>
+          <p className="font-semibold">{item_name || "no main category selected"}</p>
            <input
                    type="number"
                    value={score} onChange={(e) => setScore(e.target.value)}
@@ -298,10 +321,10 @@ export default function Manage_category() {
                 </div>
 
         <hr></hr>
-        {/* Category List */}
+        {/* Main Category List */}
 
         <div className="space-y-2 mt-5">
-          <p className="font-semibold">Existing categories:</p>
+          <p className="font-semibold">Existing main categories:</p>
           {categories.map((cat) => (
             <div
               key={cat.id}
@@ -316,19 +339,26 @@ export default function Manage_category() {
               </div>
               <p className="p-2 ">click count: {cat.clicks_count || "not fount"}</p>
 
-              <div className="flex justify-between mt-2">
+              <div className="flex justify-between mt-2 gap-1">
                 <button
-                  onClick={() => fetchProductsByCategoryID(cat.id)}
-                  className="border border-blue-500 text-blue-500  px-1 py-1 rounded"
+                  onClick={() => fetchCategoriesByCategoryID(cat.id)}
+                  className="border border-blue-500 text-blue-500  px-1 py-1 rounded text-sm"
                 >
-                  View linked products
+                  View linked category
+                </button>
+
+                <button
+                  onClick={() => fetchBrandsByCategoryID(cat.id)}
+                  className="border border-green-500 text-green-500  px-1 py-1 rounded text-sm"
+                >
+                  View linked brand
                 </button>
 
                 <button
                   onClick={() => deleteCategory(cat.id)}
-                  className="border border-red-500 text-red-500  px-1 py-1 rounded"
+                  className="border border-red-500 text-red-500  px-1 py-1 rounded text-sm"
                 >
-                  Delete category
+                  Delete
                 </button>
               </div>
 
@@ -340,10 +370,10 @@ export default function Manage_category() {
                 <div className="w-15 h-15 rounded-full border overflow-hidden flex items-center justify-center bg-gray-100">
 
                   {
-                    cat.category_image ? (
+                    cat.main_category_image ? (
                       <div>
 
-                        <img src={cat.category_image} className="w-20 h-20 object-cover" />
+                        <img src={cat.main_category_image} className="w-20 h-20 object-cover" />
                       </div>
                     ) : (
                       <p className="text-gray-400 text-sm p-4">No Image</p>
@@ -353,23 +383,14 @@ export default function Manage_category() {
                
                 <button
 
-                  onClick={() => navigate(`/admin_only/ManageImageCategory/${cat.id}`)}
+                  onClick={() => navigate(`/admin_only/ManageImageMainCategory/${cat.id}`)}
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                 >
-                  Manage Image for category
+                  Manage Image for main category
                 </button>
 
 
               </div>
-
-               
-              
-
-
-
-
-
-              {/*image*/}
 
             </div>
           ))}
