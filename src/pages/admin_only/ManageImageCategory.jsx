@@ -206,7 +206,7 @@ const { data: urlData } = supabase.storage
     }
 
     const { data, error } = await supabase
-      .from("main_categories")
+      .from("category_main")
       .select("id, name")
       .ilike("name", `%${value.toLowerCase()}%`)
       .limit(10);
