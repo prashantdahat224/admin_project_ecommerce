@@ -33,8 +33,8 @@ export default function ManageImageMainCategory() {
   const fetchCategories = async () => {
     setLoading(true);
     const { data, error } = await supabase
-      .from("main_categories")
-      .select("main_category_image")
+      .from("category_main")
+      .select("category_image")
       .eq("id", productId)
       .single();
 

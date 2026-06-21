@@ -41,7 +41,7 @@ export default function Manage_main_category() {
   const fetchCategories = async () => {
     setLoading(true);
     const { data, error } = await supabase
-      .from("main_categories")
+      .from("category_main")
       .select("*")
       .order("trending_score", { ascending: false });
 
@@ -97,7 +97,7 @@ export default function Manage_main_category() {
 
     setLoading(true);
 
-    const { data, error } = await supabase.from("main_categories").insert([{ name: name_lower }]);
+    const { data, error } = await supabase.from("category_main").insert([{ name: name_lower }]);
     if (error) {
       setLoading(false);
     } else {
@@ -118,7 +118,7 @@ export default function Manage_main_category() {
     if (!confirmAction) return;
 
     setLoading(false);
-    const { data, error } = await supabase.from("main_categories").delete().eq("id", id);
+    const { data, error } = await supabase.from("category_main").delete().eq("id", id);
     if (error) {
       setLoading(false);
     }else{
@@ -204,7 +204,7 @@ export default function Manage_main_category() {
 
     setLoading(true);
 
-    const { data, error } = await supabase.from("main_categories")
+    const { data, error } = await supabase.from("category_main")
     .update({ trending_score: number_s })
     .eq("id",id);
     if (error) {
