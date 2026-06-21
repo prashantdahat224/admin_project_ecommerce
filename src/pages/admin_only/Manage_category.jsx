@@ -356,7 +356,7 @@ export default function Manage_category() {
                   onClick={() => navigate(`/admin_only/ManageImageCategory/${cat.id}`)}
                   className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
                 >
-                  Manage Image for category
+                  Edit - Image & main_category
                 </button>
 
 

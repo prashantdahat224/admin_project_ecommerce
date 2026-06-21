@@ -35,6 +35,12 @@ export default function ManageImageCategory() {
   const [preview, setPreview] = useState(null);
   const [imagePath, setImagePath] = useState(null);
 
+  // ----- Main category assignment -----
+  const [mainCategorySearch, setMainCategorySearch] = useState("");
+  const [mainCategoryResults, setMainCategoryResults] = useState([]);
+  const [selectedMainCategory, setSelectedMainCategory] = useState(null);
+  const [currentMainCategory, setCurrentMainCategory] = useState(null);
+
  
 
 
@@ -44,7 +50,7 @@ export default function ManageImageCategory() {
     setLoading(true);
     const { data, error } = await supabase
       .from("categories")
-      .select("category_image")
+      .select("category_image, main_category_id")
       .eq("id", productId)
       .single();
         
@@ -69,6 +75,22 @@ const { data: urlData } = supabase.storage
        setLoading(false);
   
     }
+
+    // ✅ fetch currently assigned main category name (if any)
+    if (!error && data?.main_category_id) {
+      const { data: mainCat, error: mainCatError } = await supabase
+        .from("main_categories")
+        .select("id, name")
+        .eq("id", data.main_category_id)
+        .single();
+
+      if (!mainCatError) {
+        setCurrentMainCategory(mainCat);
+      }
+    } else {
+      setCurrentMainCategory(null);
+    }
+
     setLoading(false);
     
   };
@@ -170,7 +192,60 @@ const { data: urlData } = supabase.storage
   ////////////
  // ✅ Decide what image to show
   const displayImage = preview || imageUrl;
-    
+
+  ///////////
+  // ----- Main category search / select / save -----
+
+  const searchMainCategories = async (value) => {
+    setMainCategorySearch(value);
+    setSelectedMainCategory(null);
+
+    if (!value.trim()) {
+      setMainCategoryResults([]);
+      return;
+    }
+
+    const { data, error } = await supabase
+      .from("main_categories")
+      .select("id, name")
+      .ilike("name", `%${value.toLowerCase()}%`)
+      .limit(10);
+
+    if (!error) {
+      setMainCategoryResults(data || []);
+    }
+  };
+
+  const handleSelectMainCategory = (cat) => {
+    setSelectedMainCategory(cat);
+    setMainCategorySearch(cat.name);
+    setMainCategoryResults([]);
+  };
+
+  const saveMainCategory = async () => {
+    if (!selectedMainCategory) {
+      alert("please select a main category first");
+      return;
+    }
+
+    setLoading(true);
+
+    const { error } = await supabase
+      .from("categories")
+      .update({ main_category_id: selectedMainCategory.id })
+      .eq("id", productId);
+
+    setLoading(false);
+
+    if (error) {
+      alert(error.message);
+    } else {
+      alert("main category assigned!");
+      setCurrentMainCategory(selectedMainCategory);
+      setSelectedMainCategory(null);
+      setMainCategorySearch("");
+    }
+  };
 
   ///////////
 
@@ -271,6 +346,48 @@ const { data: urlData } = supabase.storage
 
 
             {/*image*/}  
+
+
+        <hr className="my-4" />
+
+        {/* Main category assignment */}
+        <div className="border border-gray-400 rounded p-3 mt-2">
+          <p className="font-semibold mb-2">Add main category</p>
+
+          <p className="text-sm text-gray-600 mb-2">
+            Current: {currentMainCategory ? currentMainCategory.name : "not assigned"}
+          </p>
+
+          <input
+            type="text"
+            value={mainCategorySearch}
+            onChange={(e) => searchMainCategories(e.target.value)}
+            placeholder="Search main category..."
+            className="border p-2 w-full rounded"
+          />
+
+          {mainCategoryResults.length > 0 && (
+            <div className="border mt-1 rounded max-h-40 overflow-y-auto">
+              {mainCategoryResults.map((cat) => (
+                <p
+                  key={cat.id}
+                  onClick={() => handleSelectMainCategory(cat)}
+                  className="p-2 cursor-pointer hover:bg-gray-100"
+                >
+                  {cat.name}
+                </p>
+              ))}
+            </div>
+          )}
+
+          <button
+            onClick={saveMainCategory}
+            disabled={loading || !selectedMainCategory}
+            className="mt-3 px-3 py-1 border border-blue-600 text-blue-600 rounded disabled:opacity-50"
+          >
+            Save main category
+          </button>
+        </div>
 
 
        

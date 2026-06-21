@@ -349,7 +349,7 @@ export default function Manage_main_category() {
 
                 <button
                   onClick={() => fetchBrandsByCategoryID(cat.id)}
-                  className="border border-green-500 text-green-500  px-1 py-1 rounded text-sm"
+                  className="border border-blue-500 text-blue-500  px-1 py-1 rounded text-sm"
                 >
                   View linked brand
                 </button>
