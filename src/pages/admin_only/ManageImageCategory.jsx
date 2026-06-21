@@ -79,7 +79,7 @@ const { data: urlData } = supabase.storage
     // ✅ fetch currently assigned main category name (if any)
     if (!error && data?.main_category_id) {
       const { data: mainCat, error: mainCatError } = await supabase
-        .from("main_categories")
+        .from("category_main")
         .select("id, name")
         .eq("id", data.main_category_id)
         .single();
