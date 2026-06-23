@@ -22,6 +22,7 @@ const ProductPostUpload = () => {
   const [description, setDescription] = useState("");
   const [about, setAbout] = useState("");
   const [stock, setStock] = useState("");
+  const [link, setLink] = useState("");  //added
 
   const [featuredFile, setFeaturedFile] = useState(null);
   const [ProductFile, setProductFile] = useState(null);//
@@ -92,6 +93,7 @@ const ProductPostUpload = () => {
       setDescription("");
       setAbout("");
       setStock("");
+      setLink(""); //added
      // setKeywords("");  //added
   };
 
@@ -150,6 +152,7 @@ const ProductPostUpload = () => {
           description,
           about,
           stock,
+          link,//added
           currency,
           product_code,
           //search_keywords,
@@ -437,6 +440,23 @@ const ProductPostUpload = () => {
             //required
           />
           </div>
+
+
+
+     {/*added */}
+          <div>
+  <p className="font-semibold">Link -</p>
+  <input
+    type="text"
+    placeholder="https://example.com"
+    value={link}
+    onChange={(e) => setLink(e.target.value)}
+    className="w-full border rounded px-3 py-2 placeholder-gray-600"
+  />
+</div>
+        {/*added */}
+
+
 
           {/* <div>
           <p className="font-semibold mt-5">Keywords</p>

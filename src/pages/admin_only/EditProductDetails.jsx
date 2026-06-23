@@ -57,6 +57,7 @@ export default function EditProductDetails() {
           stock: data.stock,
           currency: data.currency,
           product_code:data.product_code,
+          link: data.link || "",
           featured_image: data.featured_image,
           product_image: data.product_image,
           additional_images: data.additional_images || [],
@@ -98,7 +99,7 @@ export default function EditProductDetails() {
      
 
 
-    ["name", "description", "price", "about", "stock", "currency"].forEach(
+    ["name", "description", "price", "about", "stock", "currency","link"].forEach(
       (key) => {
         if (form[key] !== original[key]) {
           updates[key] = form[key];
@@ -106,26 +107,7 @@ export default function EditProductDetails() {
       }
     );
 
-    // handle keywords separately
-    // if (form.search_keywords !== original.search_keywords?.join(", ")) {
-    // //updates.search_keywords = parseKeywords(form.search_keywords,form.name);
-    // form.search_keywords = parseKeywords(form.search_keywords,form.name);
-    // updates.search_keywords = form.search_keywords;
-
-    //  const keywordRows = form.search_keywords.map((k) => ({
-    //    product_id: id,
-    //    keyword: k,
-    //     }));
-
-    //   // Insert into product_keywords table
-    //   const { error: keywordError } = await supabase
-    //  .from("product_keywords")
-    //   .insert(keywordRows);
-
-    //   if (keywordError) throw keywordError;
-    //   //////////////added
-
-    // }
+    
 
 
     if (Object.keys(updates).length === 0) {
@@ -368,6 +350,15 @@ export default function EditProductDetails() {
         <p className="font-semibold mt-3">about-</p>
         <input name="about" value={form.about} placeholder="eg. Nike, etc (OPTIONAL)"
          onChange={handleChange} className="w-full border p-2" />
+
+<p className="font-semibold mt-3">link-</p>
+<input
+  name="link"
+  value={form.link}
+  placeholder="Enter link"
+  onChange={handleChange}
+  className="w-full border p-2"
+/>
         
         <p className="font-semibold mt-3">stock-</p>
         <input name="stock" value={form.stock}  placeholder="Stock (OPTIONAL)" onChange={handleChange} className="w-full border p-2" />
