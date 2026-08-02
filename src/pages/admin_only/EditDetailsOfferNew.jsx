@@ -161,7 +161,7 @@ const handleDeleteImage = async () => {
 
  
  
-  // SAVE PRODUCT CODE
+  // SAVE PRODUCT CODE 
   const handleSaveProductCode = async () => {
     if(productCode ==="") {
       alert("enter any product code");

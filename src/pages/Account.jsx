@@ -19,10 +19,10 @@ return (
         <h1 className="text-lg mb-6">Welcome to Admin Panel of WISHMOS</h1></div>
 
  <div className=" flex flex-col items-center justify-center">
-<button onClick={() => navigate("/AdminPassword")}
+{/* <button onClick={() => navigate("/AdminPassword")}
  className="bg-gray-500 text-white px-4 py-3 px-1 rounded  ">
 Continue
-</button>
+</button> */}
 
 {isAdmin && (<button onClick={() => navigate("/admin_only/AdminOption")}
  className="mt-4 bg-gray-500 text-white px-4 py-3 px-1 rounded  ">

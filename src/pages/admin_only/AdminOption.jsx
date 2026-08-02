@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 //checked / database
 
-function AdminOption() {
+function AdminOption() { //HomePageDesign
   const navigate = useNavigate();
 
   return (
@@ -9,10 +9,11 @@ function AdminOption() {
       <h1 className="text-xl font-bold mt-4 mb-6">_choose_a_Page_for_EDIT_</h1>
 
       <button
-        onClick={() => navigate("/admin_only/OfferUploadNew") }
+        onClick={() => navigate("/admin_only/HomePageDesign") }
+       // onClick={() => navigate("/admin_only/OfferUploadNew") }
         className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
       >
-        Offers Poster
+       Home page design
       </button>
 
       <button
@@ -21,12 +22,13 @@ function AdminOption() {
       >
         Product Post UPLOAD
       </button>
-      <button
+
+      {/* <button
         onClick={() => navigate("/admin_only/ProductPostUpload-backend")}
         className="w-40 border border-blue-600 text-blue-600 p-2 rounded-md "
       >
         Product Post UPLOAD - backend
-      </button>
+      </button> */}
 
       <button
         onClick={() => navigate("/admin_only/EditProductPost")}

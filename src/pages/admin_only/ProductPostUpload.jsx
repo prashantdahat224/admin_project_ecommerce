@@ -168,7 +168,7 @@ const ProductPostUpload = () => {
     //               // Prepare keyword rows
     //    const keywordRows = search_keywords.map((k) => ({
     //    product_id: productId,
-    //    keyword: k,
+    //    keyword: k,//
     //     }));
 
     //   // Insert into product_keywords table
