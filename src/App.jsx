@@ -159,8 +159,8 @@ function App() {
        <Route path="ProductPostUpload" element={<ProductPostUpload />} />
        <Route path="HomePageDesign" element={<HomePageDesign />} />
        <Route path="Design1" element={<Design1 />} />
-       <Route path="Collections" element={<Collections />} />
-      <Route path="EditProductPost" element={<EditProductPosts />} /> 
+       <Route path="/admin_only/Collections/:sectionName" element={<Collections />} />
+       <Route path="EditProductPost" element={<EditProductPosts />} /> 
       <Route path="AdminProductSearch" element={<AdminProductSearch />} /> 
       {/* <Route path="edit-products" element={<EditProductPosts />} />   */}
       <Route path="EditProductDetails/:id" element={<EditProductDetails />} />

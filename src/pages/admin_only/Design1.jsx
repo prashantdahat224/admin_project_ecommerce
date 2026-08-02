@@ -98,7 +98,7 @@ export default function CollectionsList() {
               <p className="font-medium">{section}</p>
               <div className="flex gap-2">
                 <button
-                  onClick={() => navigate(`/admin_only/Collection/${encodeURIComponent(section)}`)}
+                  onClick={() => navigate(`/admin_only/Collections/${encodeURIComponent(section)}`)}
                   className="border border-blue-500 text-blue-500 px-2 py-1 rounded text-sm"
                 >Manage products</button>
                 <button

@@ -13,7 +13,7 @@ function AdminOption() { //HomePageDesign
        // onClick={() => navigate("/admin_only/OfferUploadNew") }
         className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
       >
-       Home page design
+       Home page design ////
       </button>
 
       <button
