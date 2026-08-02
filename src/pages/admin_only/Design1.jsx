@@ -19,12 +19,12 @@ export default function CollectionsList() {
     setLoading(true);
     const { data, error } = await supabase
       .from("home_collections")
-      .select("section_name")
+      .select("name")
       .order("display_order", { ascending: true });
 
     if (!error) {
       // get unique section names only
-      const unique = [...new Set(data.map(item => item.section_name))];
+      const unique = [...new Set(data.map(item => item.name))];
       setCollections(unique);
     }
     setLoading(false);
@@ -38,7 +38,7 @@ export default function CollectionsList() {
     // just insert a placeholder row with the section name — admin will add products in Collection.jsx
     const { error } = await supabase
       .from("home_collections")
-      .insert([{ section_name: name.trim(), product_id: null, display_order: 0 }]);
+      .insert([{ name: name.trim(), product_id: null, display_order: 0 }]);
 
     if (error) { alert(error.message); }
     else { alert("collection created!"); setName(""); fetchCollections(); }
@@ -51,7 +51,7 @@ export default function CollectionsList() {
     const { error } = await supabase
       .from("home_collections")
       .delete()
-      .eq("section_name", sectionName);
+      .eq("name", sectionName);
 
     if (error) { alert(error.message); }
     else { fetchCollections(); }
