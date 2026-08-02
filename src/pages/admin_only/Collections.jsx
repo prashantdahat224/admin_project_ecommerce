@@ -23,7 +23,7 @@ export default function Collection() {
     const { data, error } = await supabase
       .from("home_collections")
       .select("id, display_order, product_id, products(name, product_code, product_image)")
-      .eq("section_name", decodedSection)
+      .eq("name", decodedSection)
       .not("product_id", "is", null)
       .order("display_order", { ascending: true });
 
@@ -66,7 +66,7 @@ export default function Collection() {
     const { error } = await supabase
       .from("home_collections")
       .insert([{
-        section_name: decodedSection,
+        name: decodedSection,
         product_id: product.id,
         display_order: Number(displayOrder)
       }]);
@@ -110,16 +110,19 @@ export default function Collection() {
       <div className="p-4 max-w-md mx-auto">
 
         {/* Add product */}
-        <p className="font-medium mb-1">Admin guide: 1. add one product at a time <br/> 2.for entering product code- copu this from product 
+        <p className="mb-3">Admin guide:<br/> 1. add one product at a time <br/> 
+        2.for entering product code- copy this from product 
         details<br/>3. recommended 4 products to add , However - min-2;max-10</p>
         <p className="font-semibold mb-1">Add product:</p>
         <div className="flex flex-col gap-2 mb-4 border border-gray-300 p-3 rounded">
+            <p>Code</p>
           <input
-            className="border p-2 rounded"
+            className="border p-2 rounded mb-2"
             placeholder="Product code"
             value={productCode}
             onChange={(e) => setProductCode(e.target.value)}
           />
+          <p>Order-asc</p>
           <input
             type="number"
             className="border p-2 rounded"

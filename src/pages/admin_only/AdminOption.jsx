@@ -11,14 +11,14 @@ function AdminOption() { //HomePageDesign
       <button
         onClick={() => navigate("/admin_only/HomePageDesign") }
        // onClick={() => navigate("/admin_only/OfferUploadNew") }
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
        Home page design ////
       </button>
 
       <button
         onClick={() => navigate("/admin_only/ProductPostUpload")}
-        className="w-40 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         Product Post UPLOAD
       </button>
@@ -32,14 +32,14 @@ function AdminOption() { //HomePageDesign
 
       <button
         onClick={() => navigate("/admin_only/EditProductPost")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
          EDIT the existing product post
       </button>
 
       <button
         onClick={() => navigate("/admin_only/AdminProductSearch")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         DELETE the Product Post
       </button>
@@ -48,39 +48,39 @@ function AdminOption() { //HomePageDesign
 
       <button
         onClick={() => navigate("/admin_only/Manage_main_category")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         manage MAIN category 
       </button>
       <button
         onClick={() => navigate("/admin_only/manage_category")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         manage category 
       </button>
 
       <button
         onClick={() => navigate("/admin_only/manage_brand")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         manage brand 
       </button>
 
       <button
         onClick={() => navigate("/admin_only/ManageKeywords")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         manage keywords 
       </button>
       <button
         onClick={() => navigate("/admin_only/ManageTrendingKeywords")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         manage trending keywords 
       </button>
       <button
         onClick={() => navigate("/admin_only/EditOrder")}
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
         manage ORDERS 
       </button>

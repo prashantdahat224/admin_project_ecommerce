@@ -10,13 +10,13 @@ function HomePageDesign() { //HomePageDesign
 
       <button
          onClick={() => navigate("/admin_only/OfferUploadNew") }
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
        Offer poster 
       </button>
       <button
          onClick={() => navigate("/admin_only/Design1") }
-        className="w-40 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+        className="border border-blue-600 w-40 bg-gray-100 text-blue-600 py-2 rounded-md  "
       >
        design 1
       </button>
