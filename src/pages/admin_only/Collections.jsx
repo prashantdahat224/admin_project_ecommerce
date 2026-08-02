@@ -110,6 +110,8 @@ export default function Collection() {
       <div className="p-4 max-w-md mx-auto">
 
         {/* Add product */}
+        <p className="font-medium mb-1">Admin guide: 1. add one product at a time <br/> 2.for entering product code- copu this from product 
+        details<br/>3. recommended 4 products to add , However - min-2;max-10</p>
         <p className="font-semibold mb-1">Add product:</p>
         <div className="flex flex-col gap-2 mb-4 border border-gray-300 p-3 rounded">
           <input
